@@ -1,11 +1,5 @@
 import Foundation
 
-enum ProxyEnvironmentKey: String {
-  case http = "http_proxy"
-  case https = "https_proxy"
-  case all = "all_proxy"
-}
-
 public enum ProxyType: String, Equatable, CaseIterable {
   case http
   case https
@@ -58,18 +52,18 @@ public struct ProxyEnvironment {
       return nil
     }
 
-    func parse(key: ProxyEnvironmentKey) -> ProxyInfo? {
-      if let value = _getenv(key.rawValue) {
+    func parse(key: String, uppercased: String) -> ProxyInfo? {
+      if let value = _getenv(key) {
         return ProxyInfo(value)
       } else if parseUppercaseKey,
-                let value = _getenv(key.rawValue.uppercased()) {
+                let value = _getenv(uppercased) {
         return ProxyInfo(value)
       }
       return nil
     }
 
-    http = parse(key: .http)
-    https = parse(key: .https)
-    all = parse(key: .all)
+    http = parse(key: "http_proxy", uppercased: "HTTP_PROXY")
+    https = parse(key: "https_proxy", uppercased: "HTTPS_PROXY")
+    all = parse(key: "all_proxy", uppercased: "ALL_PROXY")
   }
 }

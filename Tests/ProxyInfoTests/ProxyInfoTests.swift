@@ -1,5 +1,11 @@
 import XCTest
-@testable import ProxyInfo
+import ProxyInfo
+
+enum ProxyEnvironmentKey: String {
+  case http = "http_proxy"
+  case https = "https_proxy"
+  case all = "all_proxy"
+}
 
 final class ProxyInfoTests: XCTestCase {
   // MARK: URLSession
