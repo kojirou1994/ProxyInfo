@@ -66,4 +66,9 @@ public struct ProxyEnvironment {
     https = parse(key: "https_proxy", uppercased: "HTTPS_PROXY")
     all = parse(key: "all_proxy", uppercased: "ALL_PROXY")
   }
+
+  /// there is no any proxy info
+  public var isEmpty: Bool {
+    http == nil && https == nil && all == nil
+  }
 }
