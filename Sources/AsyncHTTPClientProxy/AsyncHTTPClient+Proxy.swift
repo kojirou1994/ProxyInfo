@@ -4,9 +4,9 @@ import ProxyInfo
 extension ProxyInfo {
   var toProxy: HTTPClient.Configuration.Proxy {
     switch type {
-    case .socks5:
+    case .socks4, .socks4Hostname, .socks5, .socks5Hostname:
       return .socksServer(host: host, port: port)
-    default:
+    case .http, .https:
       return .server(host: host, port: port)
     }
   }

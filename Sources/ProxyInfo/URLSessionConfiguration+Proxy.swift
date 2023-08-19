@@ -25,7 +25,7 @@ extension URLSessionConfiguration {
       connectionProxyDictionary?[kCFNetworkProxiesHTTPSEnable] = true
       connectionProxyDictionary?[kCFNetworkProxiesHTTPSProxy] = proxyInfo.host
       connectionProxyDictionary?[kCFNetworkProxiesHTTPSPort] = proxyInfo.port
-    case .socks5:
+    case .socks4, .socks4Hostname, .socks5, .socks5Hostname:
       connectionProxyDictionary?[kCFNetworkProxiesSOCKSEnable] = true
       connectionProxyDictionary?[kCFNetworkProxiesSOCKSProxy] = proxyInfo.host
       connectionProxyDictionary?[kCFNetworkProxiesSOCKSPort] = proxyInfo.port

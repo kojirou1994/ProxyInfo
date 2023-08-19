@@ -3,7 +3,10 @@ import Foundation
 public enum ProxyType: String, Equatable, CaseIterable {
   case http
   case https
+  case socks4
+  case socks4Hostname = "socks4a"
   case socks5
+  case socks5Hostname = "socks5h"
 }
 
 public struct ProxyInfo {

@@ -30,7 +30,7 @@ final class ProxyInfoTests: XCTestCase {
           XCTAssertEqual(configuration.connectionProxyDictionary![kCFNetworkProxiesHTTPSEnable] as! Bool, true)
           XCTAssertEqual(configuration.connectionProxyDictionary![kCFNetworkProxiesHTTPSProxy] as! String, host)
           XCTAssertEqual(configuration.connectionProxyDictionary![kCFNetworkProxiesHTTPSPort] as! Int, port)
-        case .socks5:
+        case .socks4, .socks4Hostname, .socks5, .socks5Hostname:
           XCTAssertEqual(configuration.connectionProxyDictionary![kCFNetworkProxiesSOCKSEnable] as! Bool, true)
           XCTAssertEqual(configuration.connectionProxyDictionary![kCFNetworkProxiesSOCKSProxy] as! String, host)
           XCTAssertEqual(configuration.connectionProxyDictionary![kCFNetworkProxiesSOCKSPort] as! Int, port)
@@ -45,7 +45,7 @@ final class ProxyInfoTests: XCTestCase {
           XCTAssertNil(configuration.connectionProxyDictionary?[kCFNetworkProxiesHTTPSEnable])
           XCTAssertNil(configuration.connectionProxyDictionary?[kCFNetworkProxiesHTTPSProxy])
           XCTAssertNil(configuration.connectionProxyDictionary?[kCFNetworkProxiesHTTPSPort])
-        case .socks5:
+        case .socks4, .socks4Hostname, .socks5, .socks5Hostname:
           XCTAssertNil(configuration.connectionProxyDictionary?[kCFNetworkProxiesSOCKSEnable])
           XCTAssertNil(configuration.connectionProxyDictionary?[kCFNetworkProxiesSOCKSProxy])
           XCTAssertNil(configuration.connectionProxyDictionary?[kCFNetworkProxiesSOCKSPort])
