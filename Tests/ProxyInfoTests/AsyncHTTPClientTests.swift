@@ -8,7 +8,7 @@ final class AsyncHTTPClientTests: XCTestCase {
   func testIP() throws {
     let proxy: HTTPClient.Configuration.Proxy? = .environment(.init(parseUppercaseKey: true))
     print("using proxy: \(String(describing: proxy))")
-    let http = HTTPClient(eventLoopGroupProvider: .createNew, configuration: .init(proxy: proxy))
+    let http = HTTPClient(eventLoopGroupProvider: .singleton, configuration: .init(proxy: proxy))
     defer {
       try! http.syncShutdown()
     }
