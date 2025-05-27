@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ProxyType: String, Equatable, CaseIterable {
+public enum ProxyType: String, Equatable, CaseIterable, Sendable {
   case http
   case https
   case socks4
@@ -9,7 +9,7 @@ public enum ProxyType: String, Equatable, CaseIterable {
   case socks5Hostname = "socks5h"
 }
 
-public struct ProxyInfo {
+public struct ProxyInfo: Sendable {
 
   public let type: ProxyType
   public let host: String
@@ -37,7 +37,7 @@ public struct ProxyInfo {
   }
 }
 
-public struct ProxyEnvironment {
+public struct ProxyEnvironment: Sendable {
   public let http: ProxyInfo?
   public let https: ProxyInfo?
   public let all: ProxyInfo?
